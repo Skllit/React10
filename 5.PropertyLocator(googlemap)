@@ -1,0 +1,33 @@
+import React, { useState, useEffect } from "react";
+
+import { GoogleApiWrapper } from "google-maps-react";
+
+export const App = () => {
+ const [loading, setLoading] = useState(true);
+ const [searchQuery, setSearchQuery] = useState("");
+
+
+ useEffect(() => {
+  const timer = setTimeout(() => {
+   setLoading(false);
+  }, 100); // simulate delay
+  return () => clearTimeout(timer);
+ }, []);
+
+
+ return (
+
+  <div>
+
+   <label htmlFor="search">Enter location</label>
+   <input id="search" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}/>
+
+   <button onClick={() => {}}>Search</button>
+      {loading && <p>Loading...</p>}
+
+  </div>
+ );
+};
+export default GoogleApiWrapper({
+ apiKey: "AIzaSyDh0LyUchQyqlcsHgYRO5w7iUV4ttlNdDI",
+})(App);
