@@ -36,7 +36,7 @@ export const temperatureFunction = (temperature, format) => {
      return `${value}°C`;
   }
   else if(format==='Fahrenheit'){
-     value= ((value*(9/5))+32).toFixed(2);
+     value= ((value*(9/5)+32).toFixed(2);
      return `${value}°F`
   }
   else{
