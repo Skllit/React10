@@ -1,4 +1,5 @@
-';
+// PropertyService.js
+import environment from './environments/environment.ts';
 
 const API_URL = `${environment.apiUrl}/properties`;
 
@@ -27,7 +28,9 @@ const PropertyService = {
 };
 
 export default PropertyService;
+
 ---------------------------------------------------------------------------------------------------
+// PropertyList.jsx
 const PropertyList = () => {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -40,25 +43,23 @@ const PropertyList = () => {
         setProperties(data);
       } catch (err) {
         setError(err.message);
-      } finally {
-        setLoading(false);
       }
+      setLoading(false);
     };
     fetchProperties();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{`Error: ${error}`}</p>;
+  
+  if (error) 
+  return <p>{`Error: ${error}`}</p>;
 
   return (
-    <div className="property-list-container">
-      <h2 className="property-list-header">Properties List</h2>
-      <ul className="property-list">
+    <div >
+      <h2 >Properties List</h2>
+      <ul >
         {properties.map((property) => (
           <li key={property._id}>
-            <Link to={`/properties/${property._id}`}>
               {property.location} - {property.type}
-            </Link>
           </li>
         ))}
       </ul>
@@ -67,12 +68,8 @@ const PropertyList = () => {
 };
 
 export default PropertyList;
-----------------------------------------------------------------------------------------
-  import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import PropertyService from './PropertyService';
-import './App.css';
 
+----------------------------------------------------------------------------------------
 const PropertyDetail = () => {
   const { propertyID } = useParams();
 
@@ -85,20 +82,18 @@ const PropertyDetail = () => {
       try {
         const data = await PropertyService.getPropertyByID(propertyID);
         setProperty(data[0]);
+        
       } catch (err) {
         setError(err.message);
-      } finally {
-        setLoading(false);
-      }
+      } 
+      setLoading(false);
     };
     fetchProperty();
   }, [propertyID]);
 
   if (loading) return <p>Loading...</p>;
-
   if (error) return <p>{`Error: ${error}`}</p>;
 
-  if (!property) return <p>No property found.</p>;
 
   return (
     <div className="property-detail-container">
@@ -113,7 +108,6 @@ const PropertyDetail = () => {
 };
 
 export default PropertyDetail;
-
 
 
 
