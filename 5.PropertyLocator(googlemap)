@@ -31,3 +31,18 @@ export const App = () => {
 export default GoogleApiWrapper({
  apiKey: "AIzaSyDh0LyUchQyqlcsHgYRO5w7iUV4ttlNdDI",
 })(App);
+
+
+
+
+---------------------------------------------------------------------------------------------------------------
+
+easy version
+
+
+        const [loading,setLoading]=useState(true);
+
+        <p>loading</p>
+        <label htmlFor="search">Enter location</label>
+        <input id="search" name="search" value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)}></input>
+        <button onClick={()=>{}}>/Search</button>
