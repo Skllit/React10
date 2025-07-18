@@ -8,9 +8,9 @@ export const getPatients = async () => {
 
 export const addPatient = async (newPatient) => {
     const res=await fetch(`${API_URL}/patients`);
-    const pats=await res.json();
-    const id=`P${(pats.length+1).toString().padStart(3,'0')}`;
-    const newdata={...newPatient,patienID:id}
+    // const pats=await res.json();
+    // const id=`P${(pats.length+1).toString().padStart(3,'0')}`;
+    // const newdata={...newPatient,patienID:id}
     return fetch(`${API_URL}/patients`,{
         method:'POST',
         headers:{'ContentType':'application/json'},
