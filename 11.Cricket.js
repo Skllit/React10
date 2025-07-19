@@ -11,6 +11,16 @@ const maxId = Math.max(...allPlayers.map(p => p.id), 0);
 return maxId + 1;
 };
 
+export const generateId = () => {
+  let id = 1;
+  for (const player of allPlayers) {
+    if (player.id >= id) {
+      id = player.id + 1;
+    }
+  }
+  return id;
+};
+
 export const getPlayer = (id) => {
 return allPlayers.find(p => p.id === id);
 };
