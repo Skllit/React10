@@ -39,7 +39,7 @@ toast.error(msg, {position: 'top-right'});
 }
 
 let team = {
-title: "Mumbai Indians",
+title: "Rcb",
 players: [],
 };
 
